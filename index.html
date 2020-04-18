@@ -5,14 +5,12 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Another DEMO for zoom/pan/drag/rotate plugin using Snap.svg</title>
+    <title>Planetary SVG</title>
     <style>
         html, body { margin:0; padding:0; overflow:hidden }
         svg { position:fixed; top:0; left:0; height:100%; width:100%;
-            background: -webkit-radial-gradient(#7E7A7A, #434141, #000); /* Safari 5.1 to 6.0 */
-            background: -o-radial-gradient(#7E7A7A, #434141, #000); /* For Opera 11.6 to 12.0 */
-            background: -moz-radial-gradient(#7E7A7A, #434141, #000); /* For Firefox 3.6 to 15 */
-            background: radial-gradient(#7E7A7A, #434141, #000); /* Standard syntax */
+            background: white; 
+
         }
         .button {
             position: fixed;
@@ -31,34 +29,7 @@
 <body>
 
 <div class="button">
-    <button id="location">To (0,0) Location</button>
-    <br/>
-    <button id="up">Up</button>
-    <button id="down">Down</button>
-    <br/>
-    <button id="left">Left</button>
-    <button id="right">Right</button>
-    <br/>
 
-    <button id="rotateL">Rotate -15 deg</button>
-    <button id="rotateR">Rotate 15 deg</button>
-    <br/>
-
-    <button id="zoom2x">Zoom To 2x</button>
-    <button id="zoom1x">Zoom To 1x</button>
-    <br/>
-
-    <button id="save">Save</button>
-    <button id="threshold">Zoom Threshold [0.5,3]</button>
-    <br/>
-
-    <button id="destroy">Destroy</button>
-    <button id="reapply">Re-Apply</button>
-    <br/>
-    -- or use arrow key --
-    <br/>
-    <span style="color: white;">Selected:</span>
-    <span id="selected"></span>
 </div>
 
 <script>
@@ -99,8 +70,8 @@
     Snap.load('./lib/planetarysvg.svg', function (f) {
         paper.append(f);
         applyZpd();
-        paper.zoomTo(1.5, 100, null, function () {
-            paper.panTo('+200', '+200');
+        paper.zoomTo(1, 1, null, function () {
+            paper.panTo('+10', '+10');
         });
 
         var subject = [{id:"BN"},{id:"MY-01"},{id:"MY-02"},{id:"MY-03"},{id:"MY-04"},{id:"MY-05"},{id:"MY-06"},{id:"MY-07"},{id:"MY-08"},{id:"MY-09"},{id:"MY-10"},{id:"MY-11"},{id:"MY-12"},{id:"MY-13"},{id:"MY-15"}];
@@ -127,7 +98,7 @@
         clearInterval(intervalF);
     };
     document.getElementById('location').onmousedown = function () {
-        paper.panTo(0, 0);
+        paper.panTo(10, 10);
     };
     document.getElementById('left').onmousedown = function () {
         paper.panTo('-10');
